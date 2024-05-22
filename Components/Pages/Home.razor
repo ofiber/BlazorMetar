@@ -1,0 +1,62 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject NavigationManager navMan
+@inject IJSRuntime jsRuntime
+
+<PageTitle>Home</PageTitle>
+
+<div class="background">
+    <h1>Metar Parser</h1>
+    <div id="mainView">
+        <div class="icaoDiv" id="center">
+            <h3>Enter an ICAO</h3>
+            <textarea value="@icao" @onchange="e => icao = e.Value.ToString()" id="icaoTb" class="textBox" maxlength="4" style="overflow: hidden" placeholder="ICAO"></textarea>
+            <div class="icaoBtnDiv">
+                <button id="submitICAOBtn" @onclick="SubmitICAO">SUBMIT</button>
+                <p role="status">METAR: @metar</p>
+            </div>
+        </div>
+        <div class="metarDiv" id="center">
+            <h3>Enter a METAR</h3>
+            <textarea id="metarTb" class="textBox" @onkeypress="@AutoResize" style="overflow: hidden" placeholder="METAR"></textarea>
+            <div class="metarBtnDiv">
+                <button id="submitMETARBtn">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+    <div id="resultsView">
+        <textarea>METAR: @metar</textarea>
+    </div>
+</div>
+
+@code
+{
+    private string icao;
+    private string metar;
+
+    protected async void AutoResize(KeyboardEventArgs e)
+    {
+        await jsRuntime.InvokeVoidAsync("autoResize");
+    }
+
+    private void SubmitICAO()
+    {
+        metar = ApiHandler.RequestMetar(icao);
+
+        //ShowResults();
+
+        navMan.NavigateTo("Results");
+
+        //LogMetar(metar);
+    }
+
+    protected async void ShowResults()
+    {
+        await jsRuntime.InvokeVoidAsync("showResults");
+    }
+
+    protected async void LogMetar(string metar)
+    {
+        await jsRuntime.InvokeVoidAsync("logMetar", metar);
+    }
+}

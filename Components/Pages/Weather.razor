@@ -1,0 +1,38 @@
+﻿@page "/weather"
+@attribute [StreamRendering]
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+<h2>Enter ICAO code</h2>
+<button type="button" @onclick="Submit">SUBMIT</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td @bind-="Submit"></td>
+        </tr>        
+    </tbody>
+</table>
+
+@code {
+    private bool updated = false;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private void Submit()
+    {
+        updated = true;
+    }
+}
