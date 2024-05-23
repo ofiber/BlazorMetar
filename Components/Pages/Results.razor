@@ -1,10 +1,33 @@
-﻿@page "/results"
+﻿@page "/results/{icao}"
 @rendermode InteractiveServer
+@inject IJSRuntime jsRuntime
 
 <h3>Results</h3>
 
 <p>Results will be displayed here.</p>
+<p>ICAO: @icao</p>
+
+<textarea>@results</textarea>
+
 
 @code {
-    [Parameter] public string icao { get; set; } 
+
+    [Parameter]
+    public string icao { get; set; }
+    private string metar;
+    private string results;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(() => GetMetar());
+    }
+
+    private void GetMetar()
+    {
+        metar = ApiHandler.RequestMetar(icao);
+
+        MetarParser.GetParsedMetar(metar);
+
+        results = MetarParser.GetDecodedMetarAsString();
+    }
 }

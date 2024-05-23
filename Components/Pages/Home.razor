@@ -13,7 +13,6 @@
             <textarea value="@icao" @onchange="e => icao = e.Value.ToString()" id="icaoTb" class="textBox" maxlength="4" style="overflow: hidden" placeholder="ICAO"></textarea>
             <div class="icaoBtnDiv">
                 <button id="submitICAOBtn" @onclick="SubmitICAO">SUBMIT</button>
-                <p role="status">METAR: @metar</p>
             </div>
         </div>
         <div class="metarDiv" id="center">
@@ -43,16 +42,9 @@
     {
         metar = ApiHandler.RequestMetar(icao);
 
-        //ShowResults();
-
-        navMan.NavigateTo("Results");
+        navMan.NavigateTo($"Results/{icao}");
 
         //LogMetar(metar);
-    }
-
-    protected async void ShowResults()
-    {
-        await jsRuntime.InvokeVoidAsync("showResults");
     }
 
     protected async void LogMetar(string metar)
