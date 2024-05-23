@@ -6,8 +6,10 @@
 
 <p>Results will be displayed here.</p>
 <p>ICAO: @icao</p>
+<p>@count</p>
 
 <textarea>@results</textarea>
+
 
 
 @code {
@@ -15,7 +17,8 @@
     [Parameter]
     public string icao { get; set; }
     private string metar;
-    private string results;
+    private string results = "";
+    private int count = 0;
 
     protected override async Task OnInitializedAsync()
     {
@@ -24,10 +27,13 @@
 
     private void GetMetar()
     {
+        count++;
         metar = ApiHandler.RequestMetar(icao);
 
         MetarParser.GetParsedMetar(metar);
 
         results = MetarParser.GetDecodedMetarAsString();
+
+        //Console.WriteLine(results);
     }
 }

@@ -840,7 +840,11 @@ namespace BlazorMetar
         }
 
         public static string GetEncodedMetarAsString() {  return encodedMetar.ToString(); }
-        public static string GetDecodedMetarAsString() { return decodedMetar.ToString(); }
+        public static string GetDecodedMetarAsString() 
+        {
+            Console.WriteLine(decodedMetar.ToString());
+            return decodedMetar.ToString(); 
+        }
 
         public static void ResetMetarStrings() { decodedMetar.Clear(); encodedMetar.Clear(); }
     }

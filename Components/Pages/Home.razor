@@ -41,6 +41,7 @@
     private void SubmitICAO()
     {
         metar = ApiHandler.RequestMetar(icao);
+        Console.WriteLine(metar);
 
         navMan.NavigateTo($"Results/{icao}");
 
