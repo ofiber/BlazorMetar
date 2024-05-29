@@ -40,16 +40,6 @@
 
     private void SubmitICAO()
     {
-        metar = ApiHandler.RequestMetar(icao);
-        Console.WriteLine(metar);
-
         navMan.NavigateTo($"Results/{icao}");
-
-        //LogMetar(metar);
-    }
-
-    protected async void LogMetar(string metar)
-    {
-        await jsRuntime.InvokeVoidAsync("logMetar", metar);
     }
 }
