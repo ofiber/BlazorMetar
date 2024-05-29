@@ -6,7 +6,15 @@
 <div class="container">
     <h3>Results</h3>
     <div class="resDiv">
-        <textarea class="results" readonly>@results</textarea>
+        @if(results == "")
+        {
+            <p>Loading...</p>
+        }
+        else
+        {
+            <textarea class="results" readonly>@results</textarea>
+        }
+
     </div>
     <button class="backBtn" @onclick="BackBtn_Click">BACK</button>
 </div>
