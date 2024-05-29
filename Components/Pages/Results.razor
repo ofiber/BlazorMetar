@@ -1,15 +1,14 @@
 ﻿@page "/results/{icao}"
-@rendermode InteractiveServer
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@inject NavigationManager navMan
 @inject IJSRuntime jsRuntime
 
-<h3>Results</h3>
-
-<p>Results will be displayed here.</p>
-<p>ICAO: @icao</p>
-<p>@count</p>
-
-<div class="resDiv">
-    <textarea class="results">@results</textarea>
+<div class="container">
+    <h3>Results</h3>
+    <div class="resDiv">
+        <textarea class="results" readonly>@results</textarea>
+    </div>
+    <button class="backBtn" @onclick="BackBtn_Click">BACK</button>
 </div>
 
 
@@ -26,6 +25,15 @@
     protected override async Task OnInitializedAsync()
     {
         await Task.Run(() => GetMetar());
+    }
+
+    private void BackBtn_Click()
+    {
+        results = "";
+
+        MetarParser.ResetMetarStrings();
+
+        navMan.NavigateTo("/");
     }
 
     private void GetMetar()

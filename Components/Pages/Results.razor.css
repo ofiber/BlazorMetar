@@ -1,26 +1,53 @@
 ﻿body {
 }
 
-.results {
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-    background-color: #95B8D1;
-    border: thin solid gray;
-    border-radius: 5px;
-    width: 600px;
-    height: 150px;
-    overflow: hidden;
-    resize: none;
+h3 {
+    font-family: CommitMono;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    align-content: center;
+    color: #333333;
 }
 
-.resDiv {
-    align-content: center;
-    align-items: center;
-    width: 900px;
-    height: 506px;
-    align-content: center;
-    align-items: center;
-    align-self: center;
+textarea {
+    font-family: CommitMono;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
 
+button {
+    cursor: pointer;
+    align-self: center;
+    font-family: CommitMono;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    border: thin solid gray;
+    border-radius: 5px;
+    background-color: #666A86;
+}
+
+.backBtn{
+    position: absolute;
+    right: 160px;
+    bottom: -200px;
+}
+
+.results {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(0%, 20%);
+    background-color: lightslategray;
+    border: thin solid gray;
+    border-radius: 5px;
+    width: 980px;
+    height: 620px;
+    overflow: hidden;
+    resize: none;
 }
