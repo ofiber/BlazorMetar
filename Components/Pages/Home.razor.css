@@ -42,6 +42,17 @@ h3 {
     color: #333333;
 }
 
+h5 {
+    font-family: CommitMono;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    align-content: center;
+    color: #333333;
+    opacity: 0.75;
+}
+
 button {
     cursor: pointer;
     align-self: center;
@@ -131,3 +142,4 @@ button:hover {
     text-transform: uppercase;
     color: black;
 }
+

@@ -2,7 +2,9 @@
 var textarea = document.getElementById("metarTb");
 var icao;
 
-
+window.Alert = function (message) {
+    alert(message);
+}
 
 function autoResize() {
 

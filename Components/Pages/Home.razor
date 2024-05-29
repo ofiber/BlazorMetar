@@ -16,15 +16,13 @@
             </div>
         </div>
         <div class="metarDiv" id="center">
-            <h3>Enter a METAR</h3>
-            <textarea id="metarTb" class="textBox" @onkeypress="@AutoResize" style="overflow: hidden" placeholder="METAR"></textarea>
+            <h3>Enter a METAR</h3>  <! Reenable when functionality is implemented>
+            <h5>INOP</h5>
+            <textarea disabled id="metarTb" class="textBox" @onkeypress="@AutoResize" style="overflow: hidden" placeholder="METAR"></textarea>
             <div class="metarBtnDiv">
-                <button id="submitMETARBtn">SUBMIT</button>
+                <button disabled id="submitMETARBtn">SUBMIT</button>
             </div>
         </div>
-    </div>
-    <div id="resultsView">
-        <textarea>METAR: @metar</textarea>
     </div>
 </div>
 
@@ -33,13 +31,28 @@
     private string icao;
     private string metar;
 
+    private string invalidICAO = "Invalid ICAO! Please enter a new ICAO and try again!";
+
     protected async void AutoResize(KeyboardEventArgs e)
     {
         await jsRuntime.InvokeVoidAsync("autoResize");
     }
 
+    protected async void Alert(string message)
+    {
+        await jsRuntime.InvokeAsync<object>("Alert", message);
+    }
+
     private void SubmitICAO()
     {
-        navMan.NavigateTo($"Results/{icao}");
+        if(!ICAODict.icaoDict.ContainsKey(icao))
+        {
+            Alert(invalidICAO);
+            icao = "";
+
+            return;
+        }
+        else
+            navMan.NavigateTo($"Results/{icao}");
     }
 }
