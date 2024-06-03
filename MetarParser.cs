@@ -641,8 +641,6 @@ namespace BlazorMetar
 
                 decodedMetar.AppendLine("Sea Level Pressure: " + hpa + " hPa");
             }
-            
-
         }
 
         private static void GetWeather(out MatchCollection matches, string metar, Regex remarks_regex, Regex weather_regex, Dictionary<string, string> weatherMap)
@@ -840,12 +838,7 @@ namespace BlazorMetar
         }
 
         public static string GetEncodedMetarAsString() {  return encodedMetar.ToString(); }
-        public static string GetDecodedMetarAsString() 
-        {
-            Console.WriteLine(decodedMetar.ToString());
-            return decodedMetar.ToString(); 
-        }
-
+        public static string GetDecodedMetarAsString() { return decodedMetar.ToString(); }
         public static void ResetMetarStrings() { decodedMetar.Clear(); encodedMetar.Clear(); }
     }
 }

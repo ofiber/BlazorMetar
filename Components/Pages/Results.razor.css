@@ -17,19 +17,6 @@ textarea {
     font-weight: bolder;
 }
 
-p {
-    display: block;
-    font-family: CommitMono;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    color: #333333;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25%;
-}
-
 button {
     cursor: pointer;
     align-self: center;
@@ -45,17 +32,23 @@ button {
     background-color: #666A86;
 }
 
-.backBtn{
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.backBtn {
     position: absolute;
-    right: 160px;
-    bottom: -200px;
+    margin-top: 52%;
 }
 
 .results {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    transform: translate(0%, 20%);
+    transform: translate(0%, 12%);
     background-color: lightslategray;
     border: thin solid gray;
     border-radius: 5px;

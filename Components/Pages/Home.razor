@@ -32,6 +32,8 @@
     private string metar;
 
     private string invalidICAO = "Invalid ICAO! Please enter a new ICAO and try again!";
+    private string invalidLength = "ICAO must be 4 characters in length! Please enter a valid ICAO and try again!";
+    private string noICAO = "Please enter an ICAO in the ICAO input";
 
     protected async void AutoResize(KeyboardEventArgs e)
     {
@@ -45,7 +47,19 @@
 
     private void SubmitICAO()
     {
-        if(!ICAODict.icaoDict.ContainsKey(icao))
+        if (string.IsNullOrEmpty(icao))
+        {
+            Alert(noICAO);
+            icao = "";
+            return;
+        }
+        else if (icao.Length != 4)
+        {
+            Alert(invalidLength);
+            icao = "";
+            return;
+        }
+        else if(!ICAODict.icaoDict.ContainsKey(icao.ToUpper()))
         {
             Alert(invalidICAO);
             icao = "";
@@ -53,6 +67,6 @@
             return;
         }
         else
-            navMan.NavigateTo($"Results/{icao}");
+            navMan.NavigateTo($"Results/{icao.ToUpper()}");
     }
 }

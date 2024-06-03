@@ -17,11 +17,6 @@ html {
     min-height: 100%;
 }
 
-body {
-    margin-bottom: 60px;
-    background-color: #95B8D1;
-}
-
 h1 {
     font-family: CommitMono;
     font-size: 2.5em;
@@ -82,21 +77,30 @@ textarea {
     border: thin solid gray;
 }
 
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .icaoDiv {
+    position: relative;
     align-content: center;
     align-items: center;
-    margin-top: 90px;
+    position: relative;
 }
 
 .metarDiv {
+    position: relative;
     align-self: center;
     align-items: center;
     align-content: center;
-    margin-top: 130px;
-}
-
-#resultsView {
-    visibility: hidden;
+    position: relative;
+    margin-top: 8%;
 }
 
 #mainView {
@@ -142,4 +146,3 @@ button:hover {
     text-transform: uppercase;
     color: black;
 }
-
