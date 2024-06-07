@@ -1,148 +1,108 @@
 ﻿html {
-    font-size: 14px;
+    background-image: url(/wwwroot/atc_background.jpg);
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+body {
+    font-family: CommitMono;
+    background-image: url(atc_background.jpg);
+    background-size: cover;
+    /*background-color: #cce0db;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-    position: relative;
-    min-height: 100%;
+.container {
+    background-color: rgba(48, 46, 46, 0.8);
+    padding: 80px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+    color: white;
 }
 
 h1 {
-    font-family: CommitMono;
-    font-size: 2.5em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    align-content: center;
-    color: #333333;
+    margin-bottom: 50px;
+    font-size: xx-large;
+    opacity: 1;
 }
 
-h3 {
-    font-family: CommitMono;
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    align-content: center;
-    color: #333333;
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
 }
 
-h5 {
-    font-family: CommitMono;
-    font-size: 1.5em;
+label {
+    margin-bottom: 8px;
+    font-size: 22px;
     font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    align-content: center;
-    color: #333333;
-    opacity: 0.75;
-}
-
-button {
-    cursor: pointer;
-    align-self: center;
     font-family: CommitMono;
-    font-size: 1.5em;
-    font-weight: bold;
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    text-transform: uppercase;
-    border: thin solid gray;
-    border-radius: 5px;
-    background-color: #666A86;
+    opacity: 1;
 }
 
 textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #9b9999;
+    background-color: rgba(176, 192, 188, 0.5);
+    color: white;
+    border-radius: 4px;
+    resize: none;
+    text-align: center;
     font-family: CommitMono;
-    font-size: 1.5em;
+    font-size: 18px;
     font-weight: bold;
-    text-align: center;
     text-transform: uppercase;
-    border: thin solid gray;
-    border-radius: 5px;
-    margin-top: unset;
-    background-color: transparent;
-    opacity: 0.5;
-    border: thin solid gray;
+    opacity: 1;
 }
 
-.background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.icaoDiv {
-    position: relative;
-    align-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.metarDiv {
-    position: relative;
-    align-self: center;
-    align-items: center;
-    align-content: center;
-    position: relative;
-    margin-top: 8%;
-}
-
-#mainView {
-    align-content: center;
-    align-items: center;
-    align-self: center;
-    margin-top: 130px;
-}
-
-#center {
-    text-align: center;
-}
-
-
-#icaoTb {
-    width: 70px;
-    height: 40px;
-    resize: none;
-}
-
-#metarTb {
-    width: 100px;
-    max-height: 40px;
-    height: 40px;
-    resize: none;
-    align-content: center;
+textarea:focus {
+    outline: none;
+    border-color: #ce4043;
 }
 
 textarea:hover {
-    background-color: gray;
-    opacity: 0.5;
+    border-color: #ce4043;
 }
 
-button:hover {
-    background-color: #A8D0E6;
+.hasPlaceholder::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
-::placeholder {
+.hasPlaceholder::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.hasPlaceholder::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#icao {
+    width: calc(4ch + 12px); /* width to fit 4 characters plus padding and border */
+}
+
+#metar {
+    resize: none;
+    align-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #797270;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    cursor: pointer;
     font-family: CommitMono;
-    font-size: 1em;
     font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    color: black;
 }
+
+    button:hover {
+        background-color: #ce4043;
+    }

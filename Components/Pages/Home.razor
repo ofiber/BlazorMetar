@@ -5,7 +5,28 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="background">
+<body>
+    <div class="container">
+        <h1>Metar Parser</h1>
+
+        <div class="input-group">
+            <label for="icao">ICAO</label>
+            <textarea value="@icao" @onchange="e => icao = e.Value.ToString()" class="hasPlaceholder" id="icaoTb" name="icao" rows="1" cols="4" maxlength="4" placeholder="ICAO"></textarea>
+            <button type="button" id="submitICAOBtn" @onclick="SubmitICAO">Submit ICAO</button>
+        </div>
+
+        <div class="input-group">
+            <label for="metar">METAR</label>
+            <textarea class="hasPlaceholder" id="metar" rows="1" cols="8" name="metar" @onkeypress="@AutoResize" style="overflow: hidden;" placeholder="METAR"></textarea>
+            <button type="button" onclick="submitMETAR()">Submit METAR</button>
+        </div>
+    </div>
+</body>
+
+@code
+{
+    /*
+     * <div class="background">
     <h1>Metar Parser</h1>
     <div id="mainView">
         <div class="icaoDiv" id="center">
@@ -24,10 +45,10 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+     *
+     */
 
-@code
-{
     private string icao;
     private string metar;
 
