@@ -3,22 +3,22 @@
 @inject NavigationManager navMan
 @inject IJSRuntime jsRuntime
 
-<div class="container">
-    <h3>Results</h3>
-    <div class="resDiv">
-        @if(results == "")
-        {
-            <p>Loading...</p>
-        }
-        else
-        {
-            <textarea class="results" readonly>@results</textarea>
-        }
-
+<body>
+    <div class="container resultCont">
+        <h1>Results</h1>
+        <div class="resultView">
+            @if(results == "")
+            {
+                <p>Loading...</p>
+            }
+            else
+            {
+                <textarea class="resultText" id="results" readonly>@results</textarea>
+            }
+        </div>
+        <button type="button" @onclick="BackBtn_Click">Back</button>
     </div>
-    <button class="backBtn" @onclick="BackBtn_Click">BACK</button>
-</div>
-
+</body>
 
 
 
