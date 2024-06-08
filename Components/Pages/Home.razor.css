@@ -1,10 +1,10 @@
 ﻿html {
-    background-image: url(/wwwroot/atc_background.jpg);
+    background-image: url(../../wwwroot/atc_background.jpg);
 }
 
 body {
     font-family: CommitMono;
-    background-image: url(atc_background.jpg);
+    background-image: url(../../wwwroot/atc_background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,7 +22,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 30%;
+    width: 90%;
+    max-width: 400px;
     color: white;
 }
 
@@ -57,7 +58,6 @@ textarea {
     border-radius: 4px;
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
-
     resize: none;
     text-align: center;
     font-family: CommitMono;
@@ -65,6 +65,7 @@ textarea {
     font-weight: bold;
     text-transform: uppercase;
     opacity: 1;
+    box-sizing: border-box;
 }
 
 textarea:focus {
@@ -92,8 +93,9 @@ textarea:hover {
     width: calc(4ch + 12px); /* width to fit 4 characters plus padding and border */
 }
 
-#metar {
+#metarTb {
     resize: none;
+    min-width: 100px;
     align-content: center;
 }
 
@@ -107,8 +109,29 @@ button {
     font-size: medium;
     font-family: CommitMono;
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 button:hover {
     background-color: #ce4043;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }

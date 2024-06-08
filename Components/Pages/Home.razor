@@ -17,8 +17,9 @@
 
         <div class="input-group">
             <label for="metar">METAR</label>
-            <textarea class="hasPlaceholder" id="metar" rows="1" cols="8" name="metar" @onkeypress="@AutoResize" style="overflow: hidden;" placeholder="METAR"></textarea>
-            <button type="button" onclick="submitMETAR()">Submit METAR</button>
+            <label>INOP</label>
+            <textarea class="hasPlaceholder" id="metarTb" name="metar" @ref="metarTb" @oninput="@(e => AutoResize())" rows="1" cols="8" style="overflow: hidden;" placeholder="METAR"></textarea>
+            <button disabled type="button" onclick="submitMETAR()">Submit METAR</button>
         </div>
     </div>
 </body>
@@ -27,14 +28,23 @@
 {
     private string icao;
     private string metar;
+    private ElementReference metarTb;
 
     private string invalidICAO = "Invalid ICAO! Please enter a new ICAO and try again!";
     private string invalidLength = "ICAO must be 4 characters in length! Please enter a valid ICAO and try again!";
     private string noICAO = "Please enter an ICAO in the ICAO input";
 
-    protected async void AutoResize(KeyboardEventArgs e)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await jsRuntime.InvokeVoidAsync("autoResize");
+        if (firstRender)
+        {
+            await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/site.js");
+        }
+    }
+
+    protected async Task AutoResize()
+    {
+        await jsRuntime.InvokeVoidAsync("autoResize", metarTb);
     }
 
     protected async void Alert(string message)
@@ -64,6 +74,9 @@
             return;
         }
         else
+        {
+            MetarParser.ResetMetarStrings();
             navMan.NavigateTo($"Results/{icao.ToUpper()}");
+        }
     }
 }
